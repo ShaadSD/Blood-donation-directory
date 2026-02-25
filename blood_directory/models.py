@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     last_donation_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.full_name} ({self.blood_group})"
+        return f"{self.first_name} {self.last_name} ({self.blood_group})"
     
 
 
@@ -57,19 +57,19 @@ class EmergencyRequest(models.Model):
     
 
 
-# class DonationHistory(models.Model):
-#     donor = models.ForeignKey(
-#         User, on_delete=models.CASCADE, related_name="donations"
-#     )
-#     emergency_request = models.ForeignKey(
-#         EmergencyRequest,
-#         on_delete=models.SET_NULL,
-#         null=True,
-#         blank=True,
-#     )
-#     donation_date = models.DateField(default=timezone.now)
-#     next_eligible_date = models.DateField()
-#     notes = models.TextField(blank=True)
+class DonationHistory(models.Model):
+    donor = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="donations"
+    )
+    emergency_request = models.ForeignKey(
+        EmergencyRequest,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    donation_date = models.DateField(default=timezone.now)
+    next_eligible_date = models.DateField()
+    notes = models.TextField(blank=True)
 
-#     def __str__(self):
-#         return f"{self.donor.email} - {self.donation_date}"
+    def __str__(self):
+        return f"{self.donor.email} - {self.donation_date}"

@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('user.urls')),
     path('api/',include('blood_directory.urls')),
+     path('rewards/', include('Reward.urls')),
 ]

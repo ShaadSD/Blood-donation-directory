@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'user',
     'blood_directory',
     'rest_framework',
+    'Reward',
 ]
 
 MIDDLEWARE = [
